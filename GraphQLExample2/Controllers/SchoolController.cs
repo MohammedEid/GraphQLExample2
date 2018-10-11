@@ -16,6 +16,7 @@ namespace GraphQLExample2.Controllers
         public readonly Schema _schema;
         public SchoolController()
         {
+            //test commit 2
             _documentExecuter = new DocumentExecuter();
             _schema = new SchoolSchema();
             _schema.RegisterTypes(new CourseType(), new StudentType());
