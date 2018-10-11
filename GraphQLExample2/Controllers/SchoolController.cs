@@ -9,7 +9,7 @@ using GraphQL.Types;
 
 namespace GraphQLExample2.Controllers
 {
-    [Route("api/school")]
+    [Route("api/school")] 
     public class SchoolController : ApiController
     {
         public readonly DocumentExecuter _documentExecuter;
