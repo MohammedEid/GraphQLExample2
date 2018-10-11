@@ -18,6 +18,7 @@ namespace GraphQLExample2.Controllers
         {
             //test commit 2
             //test clone
+            //test clone 2
             _documentExecuter = new DocumentExecuter();
             _schema = new SchoolSchema();
             _schema.RegisterTypes(new CourseType(), new StudentType());
