@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace GraphQLExample2
+namespace GraphQLDAL
 {
-    public class Student
+    public class Course
     {
         public int Id { set; get; }
         public string Name { set; get; }
-        public int Age { set; get; }
-        public int CourseId { set; get; }
+        public string Description { set; get; }
+        public List<Student> Students { set; get; }
     }
 }

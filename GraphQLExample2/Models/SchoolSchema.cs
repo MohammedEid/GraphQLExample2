@@ -11,7 +11,7 @@ namespace GraphQLExample2
         public SchoolSchema() : base()
         {
             Query = new CourseQuery();
-            Query = new StudentQuery();
+            //Query = new StudentQuery();
         }
     }
 }

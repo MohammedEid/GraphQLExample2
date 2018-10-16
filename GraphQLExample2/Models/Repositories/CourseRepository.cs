@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Threading.Tasks;
+using GraphQLDAL;
 
 namespace GraphQLExample2
 {
@@ -11,7 +12,7 @@ namespace GraphQLExample2
         public static List<Course> _courses;
         private static CourseRepository Repository = new CourseRepository();
         public static CourseRepository Instance { get { return Repository; } }
-
+        
 
         public CourseRepository()
         {
@@ -51,7 +52,8 @@ namespace GraphQLExample2
         }
         public Task<List<Course>> GetCoursesAsync()
         {
-            return Task.FromResult(_courses);
+            return Task.FromResult(CourseDAL.GetCourses());
+            //return Task.FromResult(_courses);
         }
         public Task<Course> GetCourseAsync(int id)
         {
