@@ -57,7 +57,8 @@ namespace GraphQLExample2
         }
         public Task<Course> GetCourseAsync(int id)
         {
-            return Task.FromResult(_courses.Where(c => c.Id == id).FirstOrDefault());
+            return Task.FromResult(CourseDAL.GetCourseById(id));
+            //return Task.FromResult(_courses.Where(c => c.Id == id).FirstOrDefault());
         }
         //public Task<List<Student>> GetStudentsByCourseId(int courseId)
         //{

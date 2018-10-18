@@ -42,13 +42,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CourseDAL.cs" />
+    <Compile Include="CustomerDAL.cs" />
     <Compile Include="Helpers\SQLHelper.cs" />
+    <Compile Include="Models\Entities\Category.cs" />
     <Compile Include="Models\Entities\Course.cs" />
+    <Compile Include="Models\Entities\Customer.cs" />
+    <Compile Include="Models\Entities\Employee.cs" />
+    <Compile Include="Models\Entities\Order.cs" />
+    <Compile Include="Models\Entities\Order_Detail.cs" />
+    <Compile Include="Models\Entities\Product.cs" />
+    <Compile Include="Models\Entities\Shipper.cs" />
     <Compile Include="Models\Entities\Student.cs" />
+    <Compile Include="Models\Entities\Supplier.cs" />
+    <Compile Include="OrderDAL.cs" />
+    <Compile Include="Order_DetailDAL.cs" />
+    <Compile Include="ProductDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

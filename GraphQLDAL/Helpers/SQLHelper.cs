@@ -9,7 +9,8 @@ namespace GraphQLDAL
 {
     public static class SQLHelper
     {
-        static string ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+        //static string ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+        static string ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["NorthwindConnection"].ConnectionString;
         const int CommandTimeOut = 600;
 
         static void AttachParameters(SqlCommand command, SqlParameter[] parameters)

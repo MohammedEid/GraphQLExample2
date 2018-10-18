@@ -10,6 +10,14 @@ namespace GraphQLDAL
 {
     public static class CourseDAL
     {
+        private static Course MapCourseObject(DataRow courseDataRow)
+        {
+            Course course = new Course();            
+            course.Id = courseDataRow["Id"] != null ? Int32.Parse(courseDataRow["Id"].ToString()) : 0;
+            course.Name = courseDataRow["Name"] != null ? courseDataRow["Name"].ToString() : null;
+            course.Description = courseDataRow["Description"] != null ? courseDataRow["Description"].ToString() : null;
+            return course;
+        }
         public static List<Course> GetCourses()
         {
             DataSet dsCourses = SQLHelper.ExecuteDataset("dbo.GetCourses", null);
@@ -19,15 +27,24 @@ namespace GraphQLDAL
                 Course course = new Course();
                 for (int i=0;i< dsCourses.Tables[0].Rows.Count;i++)
                 {
-                    DataRow drCourse = dsCourses.Tables[0].Rows[i];
-                    course = new Course();
-                    course.Id = Int32.Parse(drCourse["Id"].ToString());
-                    course.Name = drCourse["Name"].ToString();
-                    course.Description = drCourse["Description"].ToString();
+                    course = MapCourseObject(dsCourses.Tables[0].Rows[i]);
                     courses.Add(course);
                 }
             }
             return courses;
         }
+        public static Course GetCourseById(int courseId)
+        {
+            SqlParameter[] Parameters = new SqlParameter[1];
+            Parameters[0] = new SqlParameter("@courseId", courseId);
+            DataSet dsCourse = SQLHelper.ExecuteDataset("dbo.GetCourseById", Parameters);
+            Course course = new Course();
+            if(dsCourse.Tables[0].Rows.Count > 0)
+            {
+                course = MapCourseObject(dsCourse.Tables[0].Rows[0]);
+            }
+            return course;
+        }
+
     }
 }
