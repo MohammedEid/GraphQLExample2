@@ -33,7 +33,7 @@ namespace GraphQLExample2
             //public virtual Employee Employee { get; set; }
             //public virtual Shipper Shipper { get; set; }
             Field<ListGraphType<Order_DetailType>>(
-                "Orders_Detail",
+                "Order_Details",
                 resolve: context => Order_DetailRepository.Instance.GetOrders_DetailsByOrder(context.Source.OrderID).Result
                 );
         }

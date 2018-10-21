@@ -40,7 +40,7 @@ namespace GraphQLDAL
         {
             SqlParameter[] Parameters = new SqlParameter[1];
             Parameters[0] = new SqlParameter("@OrderId", OrderId);
-            DataSet dsOrders_Details = SQLHelper.ExecuteDataset("dbo.GetOrder_DetailByOrderId", Parameters);
+            DataSet dsOrders_Details = SQLHelper.ExecuteDataset("dbo.GetOrders_DetailByOrderId", Parameters);
             List<Order_Detail> Orders_Details = new List<Order_Detail>();
             if (dsOrders_Details.Tables[0].Rows.Count > 0)
             {

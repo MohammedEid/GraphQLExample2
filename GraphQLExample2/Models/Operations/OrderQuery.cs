@@ -22,7 +22,7 @@ namespace GraphQLExample2
                 "GetOrderById", //Name
                 "Get Order By Order Id", //Description
                 arguments: new QueryArguments(
-                    new QueryArgument<IntGraphType> { Name = "OrderId", Description = "Order Id", DefaultValue = 1 }
+                    new QueryArgument<IntGraphType> { Name = "OrderId", Description = "Order Id", DefaultValue = 10248 }
                     ),
                 resolve: context => OrderRepository.Instance.GetOrderById(context.GetArgument<int>("OrderId")).Result
                 );
