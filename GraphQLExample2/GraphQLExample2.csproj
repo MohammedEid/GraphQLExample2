@@ -178,9 +178,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\InputTypes\OrderInputType.cs" />
     <Compile Include="Models\Operations\CustomerQuery.cs" />
     <Compile Include="Models\Operations\GraphQLQuery.cs" />
     <Compile Include="Models\Operations\CourseQuery.cs" />
+    <Compile Include="Models\Operations\NorthwindMutation.cs" />
     <Compile Include="Models\Operations\NorthwindQuery.cs" />
     <Compile Include="Models\Operations\OrderQuery.cs" />
     <Compile Include="Models\Operations\Order_DetailQuery.cs" />
@@ -195,9 +197,11 @@
     <Compile Include="Models\SchoolSchema.cs" />
     <Compile Include="Models\Types\CourseType.cs" />
     <Compile Include="Models\Types\CustomerType.cs" />
+    <Compile Include="Models\Types\EmployeeType.cs" />
     <Compile Include="Models\Types\OrderType.cs" />
     <Compile Include="Models\Types\Order_DetailType.cs" />
     <Compile Include="Models\Types\ProductType.cs" />
+    <Compile Include="Models\Types\ShipperType.cs" />
     <Compile Include="Models\Types\StudentType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

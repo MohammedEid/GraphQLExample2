@@ -23,5 +23,18 @@ namespace GraphQLExample2
         {
             return Task.FromResult(OrderDAL.GetOrderById(OrderId));
         }
+
+        public Task<Order> CreateOrder(Order order)
+        {
+            return Task.FromResult(OrderDAL.CreateOrder(order));
+        }
+        public Task<Order> EditOrder(Order order)
+        {
+            return Task.FromResult(OrderDAL.EditOrder(order));
+        }
+        public Task<int> DeleteOrder(int OrderID)
+        {
+            return Task.FromResult(OrderDAL.DeleteOrder(OrderID));
+        }
     }
 }

@@ -13,6 +13,7 @@ namespace GraphQLExample2
             //Query = new CourseQuery();
             //Query = new StudentQuery();
             Query = new NorthwindQuery();
+            Mutation = new NorthwindMutation();
         }
     }
 }

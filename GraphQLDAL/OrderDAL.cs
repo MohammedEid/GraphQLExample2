@@ -27,7 +27,7 @@ namespace GraphQLDAL
             order.ShipRegion = orderDataRow["ShipRegion"] != null ? orderDataRow["ShipRegion"].ToString() : null;
             order.ShipPostalCode = orderDataRow["ShipPostalCode"] != null ? orderDataRow["ShipPostalCode"].ToString() : null;
             order.ShipCountry = orderDataRow["ShipCountry"] != null ? orderDataRow["ShipCountry"].ToString() : null;
-            
+
             return order;
         }
         public static List<Order> GetOrders()
@@ -74,5 +74,58 @@ namespace GraphQLDAL
             }
             return Order;
         }
+        public static Order CreateOrder(Order order)
+        {
+            SqlParameter[] Parameters =
+            {
+                new SqlParameter("@CustomerID", order.CustomerID),
+                new SqlParameter("@EmployeeID", order.EmployeeID),
+                new SqlParameter("@OrderDate", order.OrderDate),
+                new SqlParameter("@RequiredDate", order.RequiredDate),
+                new SqlParameter("@ShippedDate", order.ShippedDate),
+                new SqlParameter("@ShipVia", order.ShipVia),
+                new SqlParameter("@Freight", order.Freight),
+                new SqlParameter("@ShipName", order.ShipName),
+                new SqlParameter("@ShipAddress", order.ShipAddress),
+                new SqlParameter("@ShipCity", order.ShipCity),
+                new SqlParameter("@ShipRegion", order.ShipRegion),
+                new SqlParameter("@ShipPostalCode", order.ShipPostalCode),
+                new SqlParameter("@ShipCountry", order.ShipCountry)
+            };
+
+            return GetOrderById(Convert.ToInt32(SQLHelper.ExecuteScalar(CommandType.StoredProcedure, "dbo.AddNewOrder", Parameters)));
+        }
+        public static Order EditOrder(Order order)
+        {
+            SqlParameter[] Parameters =
+            {
+                new SqlParameter("@OrderID", order.OrderID),
+                new SqlParameter("@CustomerID", order.CustomerID),
+                new SqlParameter("@EmployeeID", order.EmployeeID),
+                new SqlParameter("@OrderDate", order.OrderDate),
+                new SqlParameter("@RequiredDate", order.RequiredDate),
+                new SqlParameter("@ShippedDate", order.ShippedDate),
+                new SqlParameter("@ShipVia", order.ShipVia),
+                new SqlParameter("@Freight", order.Freight),
+                new SqlParameter("@ShipName", order.ShipName),
+                new SqlParameter("@ShipAddress", order.ShipAddress),
+                new SqlParameter("@ShipCity", order.ShipCity),
+                new SqlParameter("@ShipRegion", order.ShipRegion),
+                new SqlParameter("@ShipPostalCode", order.ShipPostalCode),
+                new SqlParameter("@ShipCountry", order.ShipCountry)
+            };
+
+            return GetOrderById(Convert.ToInt32(SQLHelper.ExecuteScalar(CommandType.StoredProcedure, "dbo.EditOrder", Parameters)));
+        }
+        public static int DeleteOrder(int OrderID)
+        {
+            SqlParameter[] Parameters =
+            {
+                new SqlParameter("@OrderID", OrderID)
+            };
+
+            return Convert.ToInt32(SQLHelper.ExecuteScalar(CommandType.StoredProcedure, "dbo.DeleteOrder", Parameters));
+        }
+
     }
 }

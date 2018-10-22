@@ -83,6 +83,60 @@ namespace GraphQLDAL
                 throw;
             }
         }
+        public static int ExecuteNonQuery(CommandType commandType, string commandText, params SqlParameter[] commandParameters)
+        {
+            if (string.IsNullOrEmpty(commandText)) throw new ArgumentNullException("commandText", "Parameter commandText couldn't be null");
+            SqlCommand command = new SqlCommand(commandText, new SqlConnection(ConnectionString));
+            command.CommandType = commandType;
+            if (commandParameters != null)
+                AttachParameters(command, commandParameters);
+            PrepareCommand(command);
+            try
+            {
+                command.Connection.Open();
+                int returnValue = command.ExecuteNonQuery();
+                command.Connection.Close();
+                command.Parameters.Clear();
+                command.Dispose();
+                return returnValue;
+            }
+            catch (Exception ex)
+            {
+                //MtsFileLogger.Instance.WriteLog(ex.ToString());
+                command.Connection.Close();
+                command.Dispose();
+                throw;
+            }
+        }
+        public static object ExecuteScalar(CommandType commandType, string commandText, params SqlParameter[] commandParameters)
+        {
+            return ExecuteScalar(ConnectionString, commandType, commandText, commandParameters);
+        }
+        public static object ExecuteScalar(string ConnectionString, CommandType commandType, string commandText, params SqlParameter[] commandParameters)
+        {
+            if (string.IsNullOrEmpty(commandText)) throw new ArgumentNullException("commandText", "Parameter commandText couldn't be null");
+            SqlCommand command = new SqlCommand(commandText, new SqlConnection(ConnectionString));
+            command.CommandType = commandType;
+            if (commandParameters != null)
+                AttachParameters(command, commandParameters);
+            PrepareCommand(command);
+            try
+            {
+                command.Connection.Open();
+                object returnValue = command.ExecuteScalar();
+                command.Connection.Close();
+                command.Parameters.Clear();
+                command.Dispose();
+                return returnValue;
+            }
+            catch (Exception ex)
+            {
+                //MtsFileLogger.Instance.WriteLog(ex.ToString());
+                command.Connection.Close();
+                command.Dispose();
+                throw;
+            }
+        }
 
     }
 }
