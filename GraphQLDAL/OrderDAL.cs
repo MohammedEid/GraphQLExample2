@@ -30,8 +30,9 @@ namespace GraphQLDAL
 
             return order;
         }
-        public static List<Order> GetOrders()
+        public static OrdersClassVm GetOrders()
         {
+            OrdersClassVm ordersClassVm = new OrdersClassVm();
             DataSet dsOrders = SQLHelper.ExecuteDataset("dbo.GetOrders", null);
             List<Order> orders = new List<Order>();
             if (dsOrders.Tables[0].Rows.Count > 0)
@@ -43,7 +44,27 @@ namespace GraphQLDAL
                     orders.Add(order);
                 }
             }
-            return orders;
+            ordersClassVm.Orders = orders;
+            ordersClassVm.OrdersCount = Int32.Parse(dsOrders.Tables[1].Rows[0]["OrdersCount"].ToString());
+            return ordersClassVm;
+        }
+        public static OrdersClassVm GetOrdersNew()
+        {
+            OrdersClassVm ordersClassVm = new OrdersClassVm();
+            DataSet dsOrders = SQLHelper.ExecuteDataset("dbo.GetOrders", null);
+            List<Order> orders = new List<Order>();
+            if (dsOrders.Tables[0].Rows.Count > 0)
+            {
+                Order order = new Order();
+                for (int i = 0; i < dsOrders.Tables[0].Rows.Count; i++)
+                {
+                    order = MapOrderObject(dsOrders.Tables[0].Rows[i]);
+                    orders.Add(order);
+                }
+            }
+            ordersClassVm.Orders = orders;
+            ordersClassVm.OrdersCount = Int32.Parse(dsOrders.Tables[1].Rows[0]["OrdersCount"].ToString());
+            return ordersClassVm;
         }
         public static List<Order> GetCustomerOrders(string CustomeId)
         {
@@ -126,6 +147,40 @@ namespace GraphQLDAL
 
             return Convert.ToInt32(SQLHelper.ExecuteScalar(CommandType.StoredProcedure, "dbo.DeleteOrder", Parameters));
         }
-
+        public static List<Order> GetOrdersByEmployeeId(int EmployeeId)
+        {
+            SqlParameter[] Parameters = new SqlParameter[1];
+            Parameters[0] = new SqlParameter("@EmployeeId", EmployeeId);
+            DataSet dsOrder = SQLHelper.ExecuteDataset("dbo.GetOrdersByEmployeeId", Parameters);
+            List<Order> Orders = new List<Order>();
+            Order Order = new Order();
+            if (dsOrder.Tables[0].Rows.Count > 0)
+            {
+                for(int i=0;i< dsOrder.Tables[0].Rows.Count;i++)
+                {
+                    Order = new Order();
+                    Order = MapOrderObject(dsOrder.Tables[0].Rows[0]);
+                    Orders.Add(Order);
+                }
+            }
+            return Orders;
+        }
+        public static List<Order> GetShipperOrders(int ShipperId)
+        {
+            SqlParameter[] Parameters = new SqlParameter[1];
+            Parameters[0] = new SqlParameter("@ShipperID", ShipperId);
+            DataSet dsOrders = SQLHelper.ExecuteDataset("dbo.GetOrdersByShipperID", Parameters);
+            List<Order> orders = new List<Order>();
+            if (dsOrders.Tables[0].Rows.Count > 0)
+            {
+                Order order = new Order();
+                for (int i = 0; i < dsOrders.Tables[0].Rows.Count; i++)
+                {
+                    order = MapOrderObject(dsOrders.Tables[0].Rows[i]);
+                    orders.Add(order);
+                }
+            }
+            return orders;
+        }
     }
 }

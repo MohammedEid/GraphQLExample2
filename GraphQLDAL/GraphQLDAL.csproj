@@ -43,12 +43,14 @@
   <ItemGroup>
     <Compile Include="CourseDAL.cs" />
     <Compile Include="CustomerDAL.cs" />
+    <Compile Include="EmployeeDAL.cs" />
     <Compile Include="Helpers\SQLHelper.cs" />
     <Compile Include="Models\Entities\Category.cs" />
     <Compile Include="Models\Entities\Course.cs" />
     <Compile Include="Models\Entities\Customer.cs" />
     <Compile Include="Models\Entities\Employee.cs" />
     <Compile Include="Models\Entities\Order.cs" />
+    <Compile Include="Models\Entities\OrdersClassVm.cs" />
     <Compile Include="Models\Entities\Order_Detail.cs" />
     <Compile Include="Models\Entities\Product.cs" />
     <Compile Include="Models\Entities\Shipper.cs" />
@@ -58,6 +60,8 @@
     <Compile Include="Order_DetailDAL.cs" />
     <Compile Include="ProductDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShipperDAL.cs" />
+    <Compile Include="ViewModels\OrdersVm.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

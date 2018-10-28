@@ -23,8 +23,7 @@ namespace GraphQLDAL
             Product.UnitsOnOrder = ProductDataRow["UnitsOnOrder"] != null ? Int32.Parse(ProductDataRow["UnitsOnOrder"].ToString()) : 0;
             Product.ReorderLevel = ProductDataRow["ReorderLevel"] != null ? Int32.Parse(ProductDataRow["ReorderLevel"].ToString()) : 0;
             Product.Discontinued = ProductDataRow["Discontinued"] != null ? bool.Parse(ProductDataRow["Discontinued"].ToString()) : false;
-
-
+            
             return Product;
         }
         public static List<Product> GetProducts()

@@ -15,9 +15,9 @@ namespace GraphQLExample2
 
             #region Order Queries
 
-            Field<ListGraphType<OrderType>>(
+            Field<OrdersVmType>(
                 "GetOrders", //Name
-                "Get All Orders", //Description
+                "Get All Orders", //Get Orders and count in one database request
                 resolve: context => OrderRepository.Instance.GetOrders().Result
                 );
 
@@ -37,6 +37,24 @@ namespace GraphQLExample2
                     new QueryArgument<StringGraphType> { Name = "CustomerId", Description = "Customer Id", DefaultValue = 1 }
                     ),
                 resolve: context => OrderRepository.Instance.GetCustomerOrders(context.GetArgument<string>("CustomerId")).Result
+                );
+
+            Field<ListGraphType<OrderType>>(
+                Name = "GetEmployeeOrders",
+                Description = "Get Orders of sepcific Employee",
+                arguments: new QueryArguments(
+                    new QueryArgument<IntGraphType> { Name = "EmployeeId", Description = "Employee ID" }
+                    ),
+                resolve: context => OrderRepository.Instance.GetOrdersByEmployeeId(context.GetArgument<int>("EmployeeId")).Result
+                );
+
+            Field<ListGraphType<OrderType>>(
+                Name = "GetShipperOrders",
+                Description = "Get Orders of sepcific Shipper",
+                arguments: new QueryArguments(
+                    new QueryArgument<IntGraphType> { Name = "ShipperId", Description = "Shipper ID" }
+                    ),
+                resolve: context => OrderRepository.Instance.GetShipperOrders(context.GetArgument<int>("ShipperId")).Result
                 );
 
             #endregion
@@ -126,6 +144,43 @@ namespace GraphQLExample2
 
             #endregion
 
+            #region Employee Queries
+
+            Field<ListGraphType<EmployeeType>>(
+                "GetEmployees", //Name
+                "Get All Employees", //Description
+                resolve: context => EmployeeRepository.Instance.GetEmployees().Result
+                );
+
+            Field<EmployeeType>(
+                "GetEmployeeById", //Name
+                "Get Employee By Employee Id", //Description
+                arguments: new QueryArguments(
+                    new QueryArgument<IntGraphType> { Name = "EmployeeId", Description = "Employee Id", DefaultValue = 1 }
+                    ),
+                resolve: context => EmployeeRepository.Instance.GetEmployeeById(context.GetArgument<int>("EmployeeId")).Result
+                );
+
+            #endregion
+
+            #region Shipper Queries
+            
+            Field<ListGraphType<ShipperType>>(
+                "GetShippers", //Name
+                "Get All Shippers", //Description
+                resolve: context => ShipperRepository.Instance.GetShippers().Result
+                );
+
+            Field<ShipperType>(
+                "GetShipperById", //Name
+                "Get Shipper By Shipper Id", //Description
+                arguments: new QueryArguments(
+                    new QueryArgument<IntGraphType> { Name = "ShipperId", Description = "Shipper Id", DefaultValue = 1 }
+                    ),
+                resolve: context => ShipperRepository.Instance.GetShipperById(context.GetArgument<int>("ShipperId")).Result
+                );
+
+            #endregion
 
 
         }

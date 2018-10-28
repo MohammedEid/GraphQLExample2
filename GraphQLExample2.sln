@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphQLExample2", "GraphQLE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphQLDAL", "GraphQLDAL\GraphQLDAL.csproj", "{FF29D94C-8272-42FF-B822-B1376166BC17}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDLL", "TestDLL\TestDLL.csproj", "{FC067C1F-541F-478C-B1A3-A175D384C163}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FF29D94C-8272-42FF-B822-B1376166BC17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF29D94C-8272-42FF-B822-B1376166BC17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF29D94C-8272-42FF-B822-B1376166BC17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC067C1F-541F-478C-B1A3-A175D384C163}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC067C1F-541F-478C-B1A3-A175D384C163}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC067C1F-541F-478C-B1A3-A175D384C163}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC067C1F-541F-478C-B1A3-A175D384C163}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

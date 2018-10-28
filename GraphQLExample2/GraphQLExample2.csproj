@@ -52,8 +52,8 @@
       <HintPath>..\packages\GraphQL-Parser.3.0.0\lib\net45\GraphQL-Parser.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -190,14 +190,18 @@
     <Compile Include="Models\Operations\StudentQuery.cs" />
     <Compile Include="Models\Repositories\CourseRepository.cs" />
     <Compile Include="Models\Repositories\CustomerRepository.cs" />
+    <Compile Include="Models\Repositories\EmployeeRepository.cs" />
     <Compile Include="Models\Repositories\OrderRepository.cs" />
     <Compile Include="Models\Repositories\Order_DetailRepository.cs" />
     <Compile Include="Models\Repositories\ProductRepository.cs" />
+    <Compile Include="Models\Repositories\ShipperRepository.cs" />
     <Compile Include="Models\Repositories\StudentRepository.cs" />
     <Compile Include="Models\SchoolSchema.cs" />
+    <Compile Include="Models\Types\ByteValueConverter.cs" />
     <Compile Include="Models\Types\CourseType.cs" />
     <Compile Include="Models\Types\CustomerType.cs" />
     <Compile Include="Models\Types\EmployeeType.cs" />
+    <Compile Include="Models\Types\OrdersVmType.cs" />
     <Compile Include="Models\Types\OrderType.cs" />
     <Compile Include="Models\Types\Order_DetailType.cs" />
     <Compile Include="Models\Types\ProductType.cs" />
@@ -266,6 +270,10 @@
     <ProjectReference Include="..\GraphQLDAL\GraphQLDAL.csproj">
       <Project>{ff29d94c-8272-42ff-b822-b1376166bc17}</Project>
       <Name>GraphQLDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestDLL\TestDLL.csproj">
+      <Project>{fc067c1f-541f-478c-b1a3-a175d384c163}</Project>
+      <Name>TestDLL</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

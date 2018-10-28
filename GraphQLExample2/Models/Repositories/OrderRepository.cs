@@ -11,7 +11,7 @@ namespace GraphQLExample2
     {
         private static OrderRepository Repository = new OrderRepository();
         public static OrderRepository Instance { get { return Repository; } }
-        public Task<List<Order>> GetOrders()
+        public Task<OrdersClassVm> GetOrders()
         {
             return Task.FromResult(OrderDAL.GetOrders());
         }
@@ -35,6 +35,14 @@ namespace GraphQLExample2
         public Task<int> DeleteOrder(int OrderID)
         {
             return Task.FromResult(OrderDAL.DeleteOrder(OrderID));
+        }
+        public Task<List<Order>> GetOrdersByEmployeeId(int EmployeeId)
+        {
+            return Task.FromResult(OrderDAL.GetOrdersByEmployeeId(EmployeeId));
+        }
+        public Task<List<Order>> GetShipperOrders(int ShipperId)
+        {
+            return Task.FromResult(OrderDAL.GetShipperOrders(ShipperId));
         }
     }
 }

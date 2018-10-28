@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using GraphQL;
 using GraphQL.Types;
+using GraphQL.Language.AST;
 
 namespace GraphQLExample2.Controllers
 {
@@ -21,7 +22,8 @@ namespace GraphQLExample2.Controllers
             //test clone 2
             _documentExecuter = new DocumentExecuter();
             _schema = new SchoolSchema();
-            _schema.RegisterTypes(new CourseType(), new StudentType());
+            //_schema.RegisterTypes(new CourseType(), new StudentType());
+            //_schema.RegisterValueConverter(new ByteValueConverter());
         }
 
         [HttpPost]
